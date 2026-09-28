@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tes Bunpou N5 — Latihan Interaktif</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2256%22%20height%3D%2256%22%20rx%3D%2210%22%20fill%3D%22%23b7412f%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fdf9f0%22%20stroke-width%3D%225.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M32%2015.5%20L32%2019.5M17%2025.5%20L47%2025.5M40%2028.5%20C35%2039%2026%2046.5%2016%2052.5M24%2028.5%20C29%2039%2038%2046.5%2048%2052.5%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<meta name="description" content="Tes Bunpou N5 &#8212; 110 soal grammar JLPT N5, 11 part, lengkap dengan romaji, furigana, dan pembahasan.">
+<meta name="theme-color" content="#efe9db" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16151a" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Tes Bunpou N5 &#8212; Latihan Interaktif">
+<meta property="og:description" content="110 soal grammar JLPT N5, 11 part. Romaji, furigana, pembahasan, dan TTS.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+
+<script>
+  (function(){
+    var s = localStorage.getItem('bunpou-theme');
+    if(!s) s = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = s;
+  })();
+</script>
+<style>
+  :root{
+    --bg:#efe9db; --bg2:#e6dfcd; --card:#fdfbf4; --fg:#241f18; --muted:#8a7c62;
+    --accent:#8a5a2b; --accent2:#6b4420; --ok:#2f7d4f; --bad:#a83a32; --warn:#9a6b1f;
+    --line:#d9d0ba; --line2:#c8bda3; --radius:8px;
+    --sh:0 1px 2px rgba(60,45,20,.06), 0 6px 18px rgba(60,45,20,.06);
+    --onaccent:#fdf9f0;
+    --okbg:#eef7f1; --badbg:#f9ecea; --optbg:#fffdf8; --opthov:#fffaf0;
+    --grain:.05; --glow:rgba(138,90,43,0);
+    --hd-bg:linear-gradient(180deg, rgba(243,238,227,.97), rgba(243,238,227,.92));
+    --inset-hi:rgba(255,255,255,.6);
+    --drop:rgba(70,55,25,.10);
+    --sheen:rgba(255,255,255,.55);
+    --blend:multiply;
+    --aurora-c:rgba(138,90,43,.16);
+    --dur:.22s; --ease:cubic-bezier(.22,.68,.32,1);
+  }
+  [data-theme="dark"]{
+    --bg:#16151a; --bg2:#201e26; --card:#1e1d24; --fg:#e8e2d6; --muted:#93897a;
+    --accent:#d09a5c; --accent2:#e6b47c; --ok:#5cb87f; --bad:#e0705f; --warn:#d6a24a;
+    --line:#302e39; --line2:#3b3945; --radius:8px;
+    --sh:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.34);
+    --onaccent:#191820;
+    --okbg:#16301f; --badbg:#33191a; --optbg:#232229; --opthov:#2a2831;
+    --grain:.09; --glow:rgba(208,154,92,.10);
+    --hd-bg:linear-gradient(180deg, rgba(26,25,31,.95), rgba(20,19,24,.90));
+    --inset-hi:rgba(255,255,255,.05);
+    --drop:rgba(0,0,0,.42);
+    --sheen:rgba(255,255,255,.10);
+    --blend:screen;
+    --aurora-c:rgba(196,132,64,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @keyframes grain-shift{
+    0%{background-position:0 0, 0 0}
+    50%{background-position:0 0, 37px 23px}
+    100%{background-position:0 0, 0 0}
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px)}
+    to{opacity:1; transform:none}
+  }
+  @keyframes fadein{from{opacity:0} to{opacity:1}}
+  @keyframes pop{
+    0%{transform:scale(1)}
+    42%{transform:scale(1.035)}
+    100%{transform:scale(1)}
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    22%{transform:translateX(-4px)}
+    55%{transform:translateX(3px)}
+    80%{transform:translateX(-1.5px)}
+  }
+  @keyframes mark-in{
+    0%{opacity:0; transform:scale(.4) rotate(-25deg)}
+    60%{opacity:1; transform:scale(1.25) rotate(6deg)}
+    100%{opacity:1; transform:scale(1) rotate(0)}
+  }
+  @keyframes sheen{
+    0%{transform:translateX(-120%)}
+    100%{transform:translateX(320%)}
+  }
+  @keyframes glowpulse{
+    0%,100%{box-shadow:0 0 0 0 var(--glow)}
+    50%{box-shadow:0 0 0 5px var(--glow)}
+  }
+  body{
+    margin:0; color:var(--fg); line-height:1.62;
+    font-family:Georgia,'Iowan Old Style','Times New Roman',serif;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--card) 0%, transparent 60%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.05'/></svg>");
+    background-attachment:fixed, fixed;
+    animation:grainshift 22s steps(1) infinite;
+    transition:background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  /* ---------- header ---------- */
+  /* ============ header ============ */
+  .hd{
+    position:sticky; top:0; z-index:20;
+    background:var(--hd-bg);
+    backdrop-filter:blur(10px) saturate(1.2);
+    border-bottom:1px solid var(--line2);
+    box-shadow:0 1px 0 var(--inset-hi) inset, 0 6px 22px var(--drop);
+    transition:box-shadow .3s var(--ease), background-color var(--dur) var(--ease);
+  }
+  .hd.shrink{box-shadow:0 1px 0 var(--inset-hi) inset, 0 10px 30px var(--drop)}
+  .hd-in{max-width:940px;margin:0 auto;padding:14px 20px 12px}
+  .hd h1{
+    margin:0;font-size:23px;font-weight:700;letter-spacing:.2px;
+    color:var(--accent2); position:relative; display:inline-block;
+  }
+  .hd h1 small{font-size:12px;font-weight:400;color:var(--muted);letter-spacing:1.4px;
+    text-transform:uppercase;display:block;margin-top:3px}
+  /* WordReveal (React Bits) */
+  .wr{display:inline-block;opacity:0;transform:translateY(.5em);filter:blur(6px);
+      animation:wr .62s var(--ease) forwards}
+  @keyframes wr{to{opacity:1;transform:none;filter:blur(0)}}
+  /* ShimmerText (React Bits) */
+  .shim{
+    background:linear-gradient(100deg,var(--accent2) 0%,var(--fg) 42%,var(--accent) 50%,var(--fg) 58%,var(--accent2) 100%);
+    background-size:250% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shim 7s linear infinite;
+  }
+  @keyframes shim{to{background-position:250% 0}}
+  .hd-rule{height:1px;background:repeating-linear-gradient(90deg,var(--line2) 0 6px,transparent 6px 12px);margin:9px 0 10px}
+  /* ============ stats + CountUp (React Bits) ============ */
+  .stats{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;line-height:1.25;position:relative;padding-left:9px}
+  .stat::before{
+    content:"";position:absolute;left:0;top:4px;bottom:6px;width:2px;border-radius:99px;
+    background:var(--sc,var(--line2));transform:scaleY(0);transform-origin:bottom;
+    animation:grow .5s var(--ease) .25s forwards;
+  }
+  .stat:nth-child(1){--sc:var(--ok)} .stat:nth-child(2){--sc:var(--accent)}
+  .stat:nth-child(3){--sc:var(--bad)}
+  @keyframes grow{to{transform:scaleY(1)}}
+  .stat b{font-size:19px;color:var(--accent2);font-variant-numeric:tabular-nums}
+  .stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+  .pct{
+    margin-left:auto;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    text-transform:uppercase;letter-spacing:.8px;
+  }
+  .pct .cap{order:2}
+  .pct b{font-size:20px;color:var(--accent2)}
+  .pct.good b{color:var(--ok)} .pct.mid b{color:var(--warn)} .pct.low b{color:var(--bad)}
+  .ring{
+    width:46px;height:46px;flex:0 0 46px;position:relative;
+  }
+  .ring svg{transform:rotate(-90deg);display:block}
+  .ring circle{fill:none;stroke-width:5;stroke-linecap:round}
+  .ring .bg{stroke:var(--line2)}
+  .ring .fg{stroke:var(--accent);transition:stroke-dashoffset .5s var(--ease), stroke .3s}
+  .ring .lbl{
+    position:absolute;inset:0;display:grid;place-items:center;
+    font-size:12px;font-weight:700;color:var(--accent2);font-variant-numeric:tabular-nums;
+  }
+  /* ============ progress ============ */
+  .pbar{height:7px;background:var(--bg2);border-radius:99px;overflow:hidden;margin-top:11px;
+        border:1px solid var(--line2);position:relative}
+  .pbar i{display:block;height:100%;width:0;border-radius:99px;position:relative;overflow:hidden;
+         background:linear-gradient(90deg,var(--accent),var(--accent2));
+         transition:width .5s var(--ease), background .3s}
+  .pbar i::after{
+    content:"";position:absolute;inset:0;width:40%;
+    background:linear-gradient(90deg,transparent,var(--sheen),transparent);
+    animation:sheen 2.4s var(--ease) infinite;
+  }
+  .pbar.ok i{background:linear-gradient(90deg,var(--ok),color-mix(in srgb,var(--ok) 62%,#fff))}
+  /* ============ controls ============ */
+  .ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+  .btn{
+    position:relative;overflow:hidden;
+    font-family:inherit;font-size:13.5px;padding:7px 15px;cursor:pointer;
+    border:1px solid var(--line2); background:var(--card); color:var(--accent2);
+    border-radius:var(--radius);
+    transition:transform .16s var(--ease),border-color .16s,color .16s,box-shadow .16s;
+    box-shadow:0 1px 0 var(--inset-hi) inset;
+  }
+  .btn::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,transparent 30%,var(--sheen) 50%,transparent 70%);
+    transform:translateX(-130%);transition:transform .5s var(--ease);
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);
+            box-shadow:0 4px 12px var(--drop)}
+  .btn:hover::after{transform:translateX(130%)}
+  .btn:active{transform:translateY(0) scale(.97)}
+  .btn.pri{background:var(--accent);color:var(--onaccent);border-color:var(--accent2)}
+  .btn.pri:hover{background:var(--accent2);color:var(--onaccent)}
+  .btn[aria-pressed="true"]{
+    background:var(--accent2);color:var(--onaccent);border-color:var(--accent2);
+  }
+  .btn .ico{font-size:14px;line-height:1;margin-right:5px;display:inline-block;
+            transition:transform .35s var(--ease)}
+  .btn:hover .ico{transform:rotate(-18deg) scale(1.12)}
+  .hint{font-size:12px;color:var(--muted);margin-left:auto}
+  .hint b{color:var(--accent2);font-weight:700}
+  /* ============ filter tabs ============ */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:12px;
+        border-top:1px dashed var(--line2)}
+  .tab{
+    position:relative;overflow:hidden;
+    font-family:inherit;font-size:12.5px;padding:5px 11px;cursor:pointer;
+    border:1px solid var(--line2);background:transparent;color:var(--muted);
+    border-radius:99px;transition:color .18s var(--ease),border-color .18s,transform .18s;
+  }
+  .tab:hover{color:var(--accent2);border-color:var(--accent);transform:translateY(-1px)}
+  .tab.on{background:var(--accent);color:var(--onaccent);border-color:var(--accent2);
+          font-weight:700;box-shadow:0 3px 10px var(--glow)}
+  .tab .mini{
+    display:inline-block;margin-left:5px;padding:0 5px;border-radius:99px;
+    font-size:10.5px;font-variant-numeric:tabular-nums;
+    background:var(--bg2);color:var(--muted);
+  }
+  .tab.on .mini{background:color-mix(in srgb,var(--onaccent) 22%,transparent);color:var(--onaccent)}
+  .tab.full .mini{background:var(--ok);color:#fff}
+  .tab.half .mini{background:var(--warn);color:#fff}
+  .tab.empty .mini{background:var(--bad);color:#fff}
+  /* ============ main ============ */
+  main{max-width:940px;margin:0 auto;padding:22px 20px 70px}
+  .ph{
+    margin:30px 0 12px;padding-bottom:7px;font-size:18px;color:var(--accent2);
+    border-bottom:1px dashed var(--line2);display:flex;align-items:baseline;gap:9px;
+    animation:fadein .45s var(--ease) both;
+  }
+  .ph:first-child{margin-top:6px}
+  .ph .n{
+    font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--onaccent);
+    background:var(--accent);padding:2px 8px;border-radius:99px;font-weight:700;
+  }
+  .ph .meta{font-size:12px;color:var(--muted);margin-left:auto;font-weight:400}
+  /* ============ card + Spotlight/GlowBorder/Tilt (React Bits) ============ */
+  .card{
+    background:var(--card);border:1px solid var(--line2);border-radius:10px;
+    padding:17px 19px 13px;margin:12px 0;box-shadow:var(--sh);position:relative;
+    animation:rise .5s var(--ease) both;
+    transition:border-color .18s,box-shadow .28s var(--ease),transform .28s var(--ease);
+    will-change:transform;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;
+    background:var(--line2);border-radius:99px;transition:background .25s,height .25s;
+  }
+  .card.ok::before{background:var(--ok);height:calc(100% - 24px)}
+  .card.no::before{background:var(--bad);height:calc(100% - 24px)}
+  .card::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    opacity:0;transition:opacity .3s var(--ease);
+    background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),
+               color-mix(in srgb,var(--accent) 13%,transparent), transparent 62%);
+  }
+  .card:hover{border-color:var(--line2);box-shadow:0 3px 6px var(--drop),0 14px 34px var(--drop)}
+  .card:hover::after{opacity:1}
+  .card.ok{border-color:color-mix(in srgb,var(--ok) 42%,var(--line2))}
+  .card.no{border-color:color-mix(in srgb,var(--bad) 42%,var(--line2));animation:rise .5s var(--ease) both, shake .34s var(--ease)}
+  .card.flash{animation:flash .6s var(--ease)}
+  @keyframes flash{
+    0%{box-shadow:var(--sh),0 0 0 0 color-mix(in srgb,var(--ok) 45%,transparent)}
+    100%{box-shadow:var(--sh),0 0 0 14px transparent}
+  }
+  .qn{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1.1px;
+      display:flex;gap:8px;align-items:center;margin-bottom:8px}
+  .qn .src{color:var(--muted);opacity:.72}
+  .q{font-size:19px;line-height:1.5;margin-bottom:13px;white-space:pre-wrap;word-break:break-word}
+  .q .blank{
+    display:inline-block;min-width:5.5em;padding:0 .5em;margin:0 .12em;
+    color:var(--accent);font-weight:700;text-align:center;letter-spacing:2px;
+    border-bottom:2px dotted var(--accent);vertical-align:baseline;
+  }
+  /* ============ options ============ */
+  .opt{
+    position:relative;overflow:hidden;
+    display:flex;width:100%;text-align:left;align-items:flex-start;gap:11px;
+    margin:7px 0;padding:10px 13px;cursor:pointer;font-family:inherit;font-size:15.5px;
+    border:1px solid var(--line);background:var(--optbg);color:var(--fg);
+    border-radius:var(--radius);text-align:left;
+    transition:transform .16s var(--ease),border-color .16s,background .16s,box-shadow .16s;
+  }
+  .opt:hover:not(:disabled){
+    border-color:var(--accent);background:var(--opthov);
+    transform:translateX(4px);box-shadow:0 3px 10px var(--drop);
+  }
+  .opt:active:not(:disabled){transform:translateX(4px) scale(.99)}
+  .opt:disabled{cursor:default}
+  .opt .k{
+    flex:0 0 22px;height:22px;display:grid;place-items:center;font-size:12px;font-weight:700;
+    color:var(--muted);background:var(--bg2);border-radius:5px;margin-top:1px;
+    transition:background .22s,color .22s,transform .22s var(--ease);
+  }
+  .opt.ok{border-color:var(--ok);background:var(--okbg);animation:pop .34s var(--ease)}
+  .opt.ok .k{background:var(--ok);color:#fff;transform:scale(1.1)}
+  .opt.no{border-color:var(--bad);background:var(--badbg)}
+  .opt.no .k{background:var(--bad);color:#fff}
+  .opt .mk{margin-left:auto;font-weight:700;opacity:0;font-size:16px;line-height:1}
+  .opt.ok .mk{color:var(--ok);opacity:1;animation:mark-in .42s var(--ease)}
+  .opt.no .mk{color:var(--bad);opacity:1;animation:mark-in .42s var(--ease)}
+  .fx{
+    margin-top:9px;font-size:13.5px;color:var(--muted);display:none;
+    padding-left:10px;border-left:2px solid currentColor;
+    animation:fadein .35s var(--ease) both;
+  }
+  .card.ok .fx,.card.no .fx{display:block}
+  .card.ok .fx{color:var(--ok)} .card.no .fx{color:var(--bad)}
+  .empty{padding:46px 0;text-align:center;color:var(--muted);animation:fadein .4s var(--ease) both}
+  /* ============ Aurora bg (React Bits) ============ */
+  .aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:.55}
+  .aurora b{
+    position:absolute;display:block;border-radius:50%;filter:blur(90px);
+    background:var(--aurora-c);mix-blend-mode:var(--blend);
+  }
+  .aurora b:nth-child(1){width:40vw;height:40vw;left:-10vw;top:-14vw;
+    animation:drift1 26s var(--ease) infinite alternate}
+  .aurora b:nth-child(2){width:34vw;height:34vw;right:-12vw;top:24vh;
+    animation:drift2 32s var(--ease) infinite alternate}
+  .aurora b:nth-child(3){width:30vw;height:30vw;left:26vw;bottom:-16vw;
+    animation:drift3 38s var(--ease) infinite alternate}
+  [data-theme="dark"] .aurora{opacity:.34}
+  @keyframes drift1{to{transform:translate(16vw,10vh) scale(1.25)}}
+  @keyframes drift2{to{transform:translate(-14vw,16vh) scale(1.18)}}
+  @keyframes drift3{to{transform:translate(10vw,-12vh) scale(1.3)}}
+  /* ============ confetti ============ */
+  .spark{position:fixed;width:7px;height:7px;border-radius:2px;pointer-events:none;
+         z-index:60;animation:spark .95s var(--ease) forwards}
+  @keyframes spark{
+    0%{opacity:1;transform:translate(0,0) rotate(0) scale(1)}
+    100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.2)}
+  }
+  /* ============ toast ============ */
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translate(-50%,150%);
+    background:var(--card);border:1px solid var(--line2);color:var(--fg);
+    padding:11px 20px;border-radius:99px;font-size:14px;box-shadow:0 10px 30px var(--drop);
+    z-index:70;transition:transform .42s var(--ease);white-space:nowrap;
+  }
+  .toast.up{transform:translate(-50%,0)}
+  .toast.ok{border-color:var(--ok);color:var(--ok)}
+  .toast.no{border-color:var(--bad);color:var(--bad)}
+  /* ============ Bouncing Dots (loading.dev) ============ */
+  .bdots{display:flex;align-items:flex-end;gap:.34em;height:1em;color:var(--accent2)}
+  .bdots i{
+    display:block;width:.28em;height:.28em;border-radius:50%;
+    background:currentColor;
+    animation:bdot var(--bd,900ms) var(--ease) infinite;
+  }
+  .bdots i:nth-child(1){animation-delay:0ms}
+  .bdots i:nth-child(2){animation-delay:calc(var(--bd,900ms) * .16)}
+  .bdots i:nth-child(3){animation-delay:calc(var(--bd,900ms) * .32)}
+  @keyframes bdot{
+    0%,70%,100%{transform:translateY(0);opacity:.45}
+    35%{transform:translateY(-.72em);opacity:1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bdots i{animation:none;opacity:.8;transform:translateY(-.3em)}
+  }
+  /* ============ boot overlay ============ */
+  .boot{
+    position:fixed;inset:0;z-index:200;display:grid;place-items:center;
+    background:var(--bg);color:var(--accent2);
+    transition:opacity .5s var(--ease),visibility .5s;
+  }
+  .boot.gone{opacity:0;visibility:hidden}
+  .boot-in{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+  .boot-in .bt{font-size:19px;font-weight:700;letter-spacing:.3px}
+  .boot-in .bs{font-size:12px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase}
+  .boot-bar{width:180px;height:3px;background:var(--bg2);border-radius:99px;overflow:hidden}
+  .boot-bar i{display:block;height:100%;width:35%;border-radius:99px;
+             background:linear-gradient(90deg,transparent,var(--accent),transparent);
+             animation:bslide 1.05s var(--ease) infinite}
+  @keyframes bslide{from{transform:translateX(-100%)}to{transform:translateX(380%)}}
+  /* ============ per-part loading ============ */
+  .partload{
+    position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);
+    display:flex;align-items:center;gap:12px;padding:20px 30px;
+    background:var(--card);border:1px solid var(--line2);border-radius:99px;
+    color:var(--muted);font-size:13.5px;letter-spacing:.5px;
+    box-shadow:0 12px 40px var(--drop);z-index:50;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s;
+  }
+  .partload.on{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+  .partload .bdots{font-size:15px}
+  /* ============ responsive ============ */
+  @media (max-width:640px){
+    .hd h1{font-size:19px}
+    main{padding:16px 13px 60px}
+    .card{padding:14px 14px 11px}
+    .q{font-size:17px}
+    .opt{font-size:15px;padding:9px 11px}
+    .pct{margin-left:0;width:100%}
+    .hint{display:none}
+    .ring{width:38px;height:38px;flex-basis:38px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.001ms !important;animation-iteration-count:1 !important;
+      transition-duration:.001ms !important;scroll-behavior:auto !important;
+    }
+  }
+  @media print{
+    .hd .ctl,.hd .tabs,.pbar,.aurora,.toast{display:none}
+    body{background:#fff}
+    .card{break-inside:avoid;box-shadow:none}
+  }
+/* ---------- study aids (added) ---------- */
+ruby{ruby-position:over}
+ruby rt{font-size:.52em;color:var(--accent2);font-weight:600;letter-spacing:.02em;
+  -webkit-user-select:none;user-select:none;transition:color .2s}
+[data-theme="dark"] ruby rt{color:var(--accent)}
+.extras{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:9px 0 2px}
+.ro{font-size:12.5px;line-height:1.5;color:var(--muted);font-style:italic;
+  font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;letter-spacing:.01em;
+  word-break:break-word;flex:1 1 200px;min-width:0}
+.tts{border:1px solid var(--line);background:var(--chip);color:var(--muted);
+  border-radius:999px;padding:3px 11px;font-size:11.5px;cursor:pointer;
+  font-family:inherit;white-space:nowrap;transition:.18s;flex:0 0 auto}
+.tts:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.tts:active{transform:translateY(0)}
+.srcf{margin-left:8px;color:var(--accent);text-decoration:none;font-size:10.5px;
+  font-weight:600;opacity:.75}
+.srcf:hover{opacity:1;text-decoration:underline}
+.why{display:none;margin-top:11px;padding:11px 13px;border-radius:12px;
+  border:1px solid var(--line);border-left:3px solid var(--accent);
+  background:var(--chip);font-size:12.5px;line-height:1.65;color:var(--muted)}
+.card.ans .why{display:block;animation:whyIn .34s ease both}
+@keyframes whyIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.why b{color:var(--ink);font-weight:650;margin-right:5px}
+.why b+b{display:block;margin-top:5px;color:var(--ok);font-size:12px}
+.why i{display:block;margin-top:7px;padding-top:7px;border-top:1px dashed var(--line);
+  color:var(--warn);font-size:11.5px;line-height:1.6;font-style:normal}
+.card.ok .why{border-left-color:var(--ok)}
+.card.no .why{border-left-color:var(--bad)}
+@media (prefers-reduced-motion:reduce){.card.ans .why{animation:none}}
+@media print{.why{display:block!important}.tts,.srcf{display:none}}
+
+/* ---------- hanko seal ---------- */
+:root{--seal:#b7412f; --seal-ink:#fdf6ea}
+[data-theme="dark"]{--seal:#d2503a; --seal-ink:#f7efe2}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
+  white-space:nowrap}
+.brand{display:flex;align-items:center;gap:15px}
+.seal{
+  flex:0 0 auto;width:56px;height:56px;display:block;text-decoration:none;
+  filter:drop-shadow(0 2px 4px var(--drop));
+  transition:transform .3s var(--ease), filter .3s var(--ease);
+}
+.seal svg{display:block;width:100%;height:100%;overflow:visible}
+.seal-paper{fill:var(--seal)}
+.seal-ink{fill:none;stroke:var(--seal-ink);stroke-width:4.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.seal-rim{fill:none;stroke:var(--seal-ink);stroke-width:1.1;opacity:.5}
+.seal:hover{transform:translateY(-2px) rotate(-2.5deg);
+  filter:drop-shadow(0 7px 13px var(--drop))}
+.seal:active{transform:translateY(0) scale(.95)}
+/* a seal is pressed, so it lands with weight and a slight overshoot */
+.seal{animation:sealIn .72s var(--ease) .22s both}
+@keyframes sealIn{
+  0%{opacity:0;transform:scale(1.85) rotate(10deg)}
+  52%{opacity:1;transform:scale(.93) rotate(-2.5deg)}
+  74%{transform:scale(1.05) rotate(.7deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+@media (prefers-reduced-motion:reduce){.seal{animation:none}}
+@media (max-width:420px){
+  .brand{gap:11px}
+  .seal{width:44px;height:44px}
+  .hd h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"><b></b><b></b><b></b></div>
+
+<div class="boot" id="boot">
+  <div class="boot-in">
+    <div class="bdots" style="font-size:44px;--bd:900ms"><i></i><i></i><i></i></div>
+    <div class="bt">Tes Bunpou N5</div>
+    <div class="boot-bar"><i></i></div>
+    <div class="bs" id="bootMsg">Menyiapkan 110 soal</div>
+  </div>
+</div>
+
+<header class="hd" id="hd">
+  <div class="hd-in">
+    <div class="brand">
+<a class="seal" href="#main" id="seal" title="Tes Bunpou N5"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><defs><linearGradient id="sealGrad" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".20"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient></defs><rect class="seal-paper" x="4" y="4" width="56" height="56" rx="9"/><rect class="seal-lip" x="4" y="4" width="56" height="56" rx="9" fill="url(#sealGrad)"/><path class="seal-ink" d="M32 15.5 L32 19.5M17 25.5 L47 25.5M40 28.5 C35 39 26 46.5 16 52.5M24 28.5 C29 39 38 46.5 48 52.5"/><rect class="seal-rim" x="6.2" y="6.2" width="51.6" height="51.6" rx="7"/></svg><span class="sr">Tes Bunpou N5</span></a>
+    <h1>
+      <span class="wr" style="animation-delay:.02s">Tes</span>
+      <span class="wr" style="animation-delay:.12s">Bunpou</span>
+      <span class="wr" style="animation-delay:.22s"><span class="shim">N5</span></span>
+      <small>Grammar Quiz &middot; 110 soal &middot; 11 part</small>
+    </h1>
+    </div>
+    <div class="hd-rule"></div>
+    <div class="stats">
+      <div class="stat"><b id="sRight">0</b><span>Benar</span></div>
+      <div class="stat"><b id="sDone">0</b><span>Dijawab</span></div>
+      <div class="stat"><b id="sWrong">0</b><span>Salah</span></div>
+      <div class="pct" id="sPct">
+        <span class="ring">
+          <svg width="46" height="46" viewBox="0 0 46 46">
+            <circle class="bg" cx="23" cy="23" r="19"></circle>
+            <circle class="fg" id="ringFg" cx="23" cy="23" r="19"
+                    stroke-dasharray="119.4" stroke-dashoffset="119.4"></circle>
+          </svg>
+          <span class="lbl" id="ringLbl">0%</span>
+        </span>
+        <span class="cap">akurasi</span>
+      </div>
+    </div>
+    <div class="pbar" id="pbar"><i></i></div>
+    <div class="ctl">
+      <button class="btn" id="themeBtn" onclick="toggleTheme()" title="Ganti tema (t)">
+        <span class="ico" id="themeIco">&#9788;</span><span id="themeTxt">Gelap</span>
+      </button>
+      <button class="btn pri" onclick="resetAll()">Reset</button>
+      <button class="btn" onclick="revealPart()">Buka kunci part ini</button>
+      <button class="btn" onclick="onlyWrong()">Saring salah</button>
+      <button class="btn" onclick="jumpWrong()">Lompat ke salah</button>
+      <span class="hint">pintasan: <b>a b c d</b> jawab &middot; <b>s</b> kunci &middot; <b>w</b> saring &middot; <b>t</b> tema &middot; <b>r</b> reset</span>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</header>
+
+<main id="main"></main>
+<div class="partload" id="partload">
+  <span class="bdots" style="--bd:760ms"><i></i><i></i><i></i></span>
+  <span>memuat part</span>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const Q = [{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":1,"q":"きのうは　とても　　　　　　　。","html":"きのうは　とても<span class=\"blank\">____</span>。","ro":"kinouha totemo ... 。","speak":"きのうは とても えす 。","opts":["さむいです","さむいだったです","さむかったです","さむかったでした"],"ans":2,"k":"kihon","why":"setelah も di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":2,"q":"この　おかしは　　　　　　　。","html":"この　おかしは<span class=\"blank\">____</span>。","ro":"kono okasiha ... 。","speak":"この おかしは えす 。","opts":["おいしくなくです","おいしいないです","おいしくないです","おいしいなくです"],"ans":2,"k":"kunaidesu","why":"setelah は di Bentuk negatif kata sifat yang sopan: stem + くないdesu.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":3,"q":"やまかわさんの　かばんは　とても　　　　　　　。","html":"やまかわさんの　かばんは　とても<span class=\"blank\">____</span>。","ro":"yamakawasanno kabanha totemo ... 。","speak":"やまかわさんの かばんは とても えす 。","opts":["おもいでした","おもかったです","おもいかったです","おもかったでした"],"ans":1,"k":"kihon","why":"setelah も di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":4,"q":"かんじの　テストは　　　　　　　なかったです。","html":"かんじの　テストは<span class=\"blank\">____</span>なかったです。","ro":"kanzino tesutoha ... naka'tutadesu。","speak":"かんじの テストは えす なかったです。","opts":["むずかし","むずかしい","むずかしく","むずかしくて"],"ans":2,"k":"ku","why":"setelah は di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":5,"q":"あの人は　ゆうめい　　　　　　　。","html":"あの<ruby>人<rt>jin/nin</rt></ruby>は　ゆうめい<span class=\"blank\">____</span>。","ro":"ano人ha yuumei ... 。","speak":"あの人は ゆうめい えす 。","opts":["なです","くないです","くなかった","ではありません"],"ans":3,"k":"dewa","why":"setelah い di Bentuk ではありません berarti \"bukan / tidak\". Menyatakan negasi untuk kata benda.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":6,"q":"　　　　　　で　ばんごはんを　食べますか。","html":"<span class=\"blank\">____</span>で　ばんごはんを　<ruby>食<rt>shoku</rt></ruby>べますか。","ro":"... de bangohano 食bemasuka。","speak":"えす で ばんごはんを 食べますか。","opts":["どこ","どんな","どう","どの"],"ans":0,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":7,"q":"　　　　　　かばんが　なかむらさんのですか。","html":"<span class=\"blank\">____</span>かばんが　なかむらさんのですか。","ro":"... kabanga nakamurasannodesuka。","speak":"えす かばんが なかむらさんのですか。","opts":["どの","どう","どれ","どちら"],"ans":0,"k":"qword","why":"Kata tanya interogatif. Pilih yang paling sesuai dengan hal yang ditanyakan di kalimat.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":8,"q":"　　　　　　スポーツが　すきですか。","html":"<span class=\"blank\">____</span>スポーツが　すきですか。","ro":"... supotuga sukidesuka。","speak":"えす スポーツが すきですか。","opts":["どこ","どれ","どちら","どんな"],"ans":3,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":9,"q":"みかんは　　　　　　　ありますか。","html":"みかんは<span class=\"blank\">____</span>ありますか。","ro":"mikanha ... arimasuka。","speak":"みかんは えす ありますか。","opts":["なに","いくつ","どれ","どの"],"ans":1,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 1","title":"JLPT N5 Grammar Quiz 01","url":"https://forms.gle/v6p1ERrmEHgmu8KZ8","no":10,"q":"すみません。トイレは　　　　　　　ですか。","html":"すみません。トイレは<span class=\"blank\">____</span>ですか。","ro":"sumimasen。toireha ... desuka。","speak":"すみません。トイレは えす ですか。","opts":["どこか","どちら","どの","どなた"],"ans":1,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":1,"q":"みかん　　　　　　　３つ　買いました。","html":"みかん<span class=\"blank\">____</span>３つ　<ruby>買<rt>bai</rt></ruby>いました。","ro":"mikan ... ３tu 買imasita。","speak":"みかん えす ３つ 買いました。","opts":["が","に","を","の"],"ans":2,"k":"wo","why":"setelah ん di Kasus を menandai objek langsung, arah, atau \"melewati\".","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":2,"q":"きのう　だれ　　　　　　　いっしょに　えいがを　見ましたか。","html":"きのう　だれ<span class=\"blank\">____</span>いっしょに　えいがを　<ruby>見<rt>ken</rt></ruby>ましたか。","ro":"kinou dare ... i'tusi'yoni eigao 見masitaka。","speak":"きのう だれ えす いっしょに えいがを 見ましたか。","opts":["を","に","で","と"],"ans":3,"k":"to","why":"setelah れ di Kasus と berarti \"bersama\" atau \"dan\", menyamakan dua hal.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":3,"q":"すみません、コーヒー　　　　　　　ください。","html":"すみません、コーヒー<span class=\"blank\">____</span>ください。","ro":"sumimasen、kohi ... kudasai。","speak":"すみません、コーヒー えす ください。","opts":["が","に","を","や"],"ans":2,"k":"wo","why":"Kasus を menandai objek langsung, arah, atau \"melewati\".","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":4,"q":"ペンは　５本　　　　　　　３００円です。","html":"ペンは　５<ruby>本<rt>hon</rt></ruby><span class=\"blank\">____</span>３００<ruby>円<rt>en</rt></ruby>です。","ro":"penha ５本 ... ３００円desu。","speak":"ペンは ５本 えす ３００円です。","opts":["を","に","で","と"],"ans":2,"k":"de","why":"Kasus で berarti alat yang dipakai, atau tempat kejadian.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":5,"q":"テーブルの　上に　ナイフ　　　　　　　フォークなどが　あります。","html":"テーブルの　<ruby>上<rt>jou</rt></ruby>に　ナイフ<span class=\"blank\">____</span>フォークなどが　あります。","ro":"teburuno 上ni naihu ... hu'okunadoga arimasu。","speak":"テーブルの 上に ナイフ えす フォークなどが あります。","opts":["が","を","も","や"],"ans":3,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":6,"q":"すみません、ちょっと　　　　　　　ください。","html":"すみません、ちょっと<span class=\"blank\">____</span>ください。","ro":"sumimasen、ti'yo'tuto ... kudasai。","speak":"すみません、ちょっと えす ください。","opts":["まちて","まつて","まちって","まって"],"ans":3,"k":"te","why":"setelah と di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":7,"q":"毎日 を　　　　　　　ください。","html":"<ruby>毎日<rt>mai/nichi</rt></ruby> を<span class=\"blank\">____</span>ください。","ro":"毎日 o ... kudasai。","speak":"毎日 を えす ください。","opts":["みがいて","みがきて","みがって","みがくて"],"ans":0,"k":"te","why":"setelah を di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":"Catatan: teks asli form menulis dua kata dengan urutan tertukar. Sudah diperbaiki menjadi 毎日 を."},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":8,"q":"パーティーで　ギターを　　　　　　　ください。","html":"パーティーで　ギターを<span class=\"blank\">____</span>ください。","ro":"pate'ide gitao ... kudasai。","speak":"パーティーで ギターを えす ください。","opts":["ひきて","ひいて","ひって","ひきって"],"ans":1,"k":"te","why":"setelah を di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":9,"q":"この　ことばは　たいせつですから　　　　　　　ください。","html":"この　ことばは　たいせつですから<span class=\"blank\">____</span>ください。","ro":"kono kotobaha taisetudesukara ... kudasai。","speak":"この ことばは たいせつですから えす ください。","opts":["おぼえて","おぼりて","おぼって","おぼえって"],"ans":0,"k":"te","why":"setelah ら di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 2","title":"JLPT N5 Grammar Quiz 02","url":"https://forms.gle/ti8CFTdszDYoSrHn8","no":10,"q":"ケーキを　半分に　　　　　　　ください。","html":"ケーキを　<ruby>半分<rt>han/pun/bun</rt></ruby>に<span class=\"blank\">____</span>ください。","ro":"kekio 半分ni ... kudasai。","speak":"ケーキを 半分に えす ください。","opts":["きて","きって","きりて","きいて"],"ans":1,"k":"te","why":"setelah に di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":1,"q":"ごはんを　　　　　　　後で、この　くすりを　飲んで　ください。","html":"ごはんを<span class=\"blank\">____</span><ruby>後<rt>go</rt></ruby>で、この　くすりを　<ruby>飲<rt>in</rt></ruby>んで　ください。","ro":"gohano ... 後de、kono kusurio 飲nde kudasai。","speak":"ごはんを えす 後で、この くすりを 飲んで ください。","opts":["食べる","食べて","食べた","食べない"],"ans":1,"k":"te","why":"setelah を di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":2,"q":"何か　　　　　　　ながら、話を　しませんか。","html":"<ruby>何<rt>nan</rt></ruby>か<span class=\"blank\">____</span>ながら、<ruby>話<rt>wa</rt></ruby>を　しませんか。","ro":"何ka ... nagara、話o simasenka。","speak":"何か えす ながら、話を しませんか。","opts":["飲ま","飲み","飲む","飲んで"],"ans":1,"k":"kihon","why":"setelah か di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":3,"q":"毎朝　会社に　　　　　　　前に　ジョギングを　しています。","html":"<ruby>毎朝<rt>mai/asa</rt></ruby>　<ruby>会社<rt>kai/sha</rt></ruby>に<span class=\"blank\">____</span><ruby>前<rt>zen</rt></ruby>に　ジョギングを　しています。","ro":"毎朝 会社ni ... 前ni zi'yoginguo siteimasu。","speak":"毎朝 会社に えす 前に ジョギングを しています。","opts":["行く","行きます","行った","行って"],"ans":0,"k":"ku","why":"setelah に di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":4,"q":"まいばん　おふろに　　　　　　　から　ねます。","html":"まいばん　おふろに<span class=\"blank\">____</span>から　ねます。","ro":"maiban ohuroni ... kara nemasu。","speak":"まいばん おふろに えす から ねます。","opts":["入り","入る","入った","入って"],"ans":2,"k":"ta","why":"setelah に di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":5,"q":"あたらしい　カメラを　　　　　　　前に　ふるい　カメラを　うりました。","html":"あたらしい　カメラを<span class=\"blank\">____</span><ruby>前<rt>zen</rt></ruby>に　ふるい　カメラを　うりました。","ro":"atarasii kamerao ... 前ni hurui kamerao urimasita。","speak":"あたらしい カメラを えす 前に ふるい カメラを うりました。","opts":["買った","買い","買って","買う"],"ans":3,"k":"kihon","why":"setelah を di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":6,"q":"おとうとは　１６さい　　　　　　、学生です。","html":"おとうとは　１６さい<span class=\"blank\">____</span>、<ruby>学生<rt>gaku/sei</rt></ruby>です。","ro":"otoutoha １６sai ... 、学生desu。","speak":"おとうとは １６さい えす 、学生です。","opts":["で","だ","の","くて"],"ans":0,"k":"de","why":"setelah い di Kasus で berarti alat yang dipakai, atau tempat kejadian.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":7,"q":"すずきさんは　げんき　　　　　　　おもしろい人です。","html":"すずきさんは　げんき<span class=\"blank\">____</span>おもしろい<ruby>人<rt>jin/nin</rt></ruby>です。","ro":"suzukisanha genki ... omosiroi人desu。","speak":"すずきさんは げんき えす おもしろい人です。","opts":["に","で","だ","くて"],"ans":1,"k":"de","why":"setelah き di Kasus で berarti alat yang dipakai, atau tempat kejadian.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":8,"q":"おとといは　ゆき　　　　　　、きのうは　雨でした。","html":"おとといは　ゆき<span class=\"blank\">____</span>、きのうは　<ruby>雨<rt>u</rt></ruby>でした。","ro":"ototoiha yuki ... 、kinouha 雨desita。","speak":"おとといは ゆき えす 、きのうは 雨でした。","opts":["で","だ","だった","だったで"],"ans":2,"k":"ta","why":"setelah き di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":9,"q":"母の　新しい　カメラは　　　　　　　かるい。","html":"<ruby>母<rt>bo</rt></ruby>の　<ruby>新<rt>shin</rt></ruby>しい　カメラは<span class=\"blank\">____</span>かるい。","ro":"母no 新sii kameraha ... karui。","speak":"母の 新しい カメラは えす かるい。","opts":["小さいで","小さいと","小さいくて","小さくて"],"ans":3,"k":"te","why":"setelah は di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 3","title":"JLPT N5 Grammar Quiz 03","url":"https://forms.gle/kQkK8cJiZWuGHnYCA","no":10,"q":"じしょを　　　　　　　　かんじを　おぼえます。","html":"じしょを<span class=\"blank\">____</span>かんじを　おぼえます。","ro":"zisi'yoo ... kanzio oboemasu。","speak":"じしょを えす かんじを おぼえます。","opts":["見る","見て","見た","見に"],"ans":2,"k":"ta","why":"setelah を di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":1,"q":"わたしの　サンドイッチを　　　　　　　ください。","html":"わたしの　サンドイッチを<span class=\"blank\">____</span>ください。","ro":"watasino sandoitsutio ... kudasai。","speak":"わたしの サンドイッチを えす ください。","opts":["食べないで","食べなくて","食べません","食べない"],"ans":0,"k":"naide","why":"setelah を di Te-form negatif, berarti \"jangan\". Hanya untuk larangan atau permintaan LARANG. Tidak bisa dipakai di ください.","note":"Catatan: semua opsi di soal ini bernada negatif. ください berarti \"jangan\". Karena itu opsi (a) sah secara tata bahasa dan kunci tetap (a)."},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":2,"q":"子どもが　ねて　いますから、大きい　こえで　　　　　　　ください。","html":"<ruby>子<rt>ko</rt></ruby>どもが　ねて　いますから、<ruby>大<rt>dai/oo</rt></ruby>きい　こえで<span class=\"blank\">____</span>ください。","ro":"子domoga nete imasukara、大kii koede ... kudasai。","speak":"子どもが ねて いますから、大きい こえで えす ください。","opts":["うたいないで","うたわないで","うたわなくて","うたうないで"],"ans":1,"k":"naide","why":"setelah で di Te-form negatif, berarti \"jangan\". Hanya untuk larangan atau permintaan LARANG. Tidak bisa dipakai di ください.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":3,"q":"この　テストは　じしょを　　　　　　　ください。","html":"この　テストは　じしょを<span class=\"blank\">____</span>ください。","ro":"kono tesutoha zisi'yoo ... kudasai。","speak":"この テストは じしょを えす ください。","opts":["つかうないで","つかわないで","つかいないで","つかないで"],"ans":1,"k":"naide","why":"setelah を di Te-form negatif, berarti \"jangan\". Hanya untuk larangan atau permintaan LARANG. Tidak bisa dipakai di ください.","note":"Catatan: semua opsi di soal ini negatif. Yang benar つかわないで = bentuk te-form negatif."},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":4,"q":"たいせつな　しゃしんですから　　　　　　　ください。","html":"たいせつな　しゃしんですから<span class=\"blank\">____</span>ください。","ro":"taisetuna si'yasindesukara ... kudasai。","speak":"たいせつな しゃしんですから えす ください。","opts":["なくさなくて","なくしないで","なくさないで","なくしなくて"],"ans":2,"k":"naide","why":"setelah ら di Te-form negatif, berarti \"jangan\". Hanya untuk larangan atau permintaan LARANG. Tidak bisa dipakai di ください.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":5,"q":"つくえの　上に　かばんを　　　　　　　ないでください。","html":"つくえの　<ruby>上<rt>jou</rt></ruby>に　かばんを<span class=\"blank\">____</span>ないでください。","ro":"tukueno 上ni kabano ... naidekudasai。","speak":"つくえの 上に かばんを えす ないでください。","opts":["おか","おき","おく","おけ"],"ans":1,"k":"kihon","why":"setelah を di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":6,"q":"おちゃも　コーヒー　　　　　　　よく　飲みます。","html":"おちゃも　コーヒー<span class=\"blank\">____</span>よく　<ruby>飲<rt>in</rt></ruby>みます。","ro":"oti'yamo kohi ... yoku 飲mimasu。","speak":"おちゃも コーヒー えす よく 飲みます。","opts":["が","に","を","も"],"ans":3,"k":"mo","why":"Kasus も berarti \"juga / bahkan\", menggantikan が atau を.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":7,"q":"びょういんで　友だち　　　　　　　会いました。","html":"びょういんで　<ruby>友<rt>yuu</rt></ruby>だち<span class=\"blank\">____</span><ruby>会<rt>kai</rt></ruby>いました。","ro":"bi'youinde 友dati ... 会imasita。","speak":"びょういんで 友だち えす 会いました。","opts":["に","を","で","へ"],"ans":0,"k":"ni","why":"setelah ち di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":8,"q":"山本さんは　ゴルフは　しますが、テニス　　　　　　　しません。","html":"<ruby>山本<rt>san/hon</rt></ruby>さんは　ゴルフは　しますが、テニス<span class=\"blank\">____</span>しません。","ro":"山本sanha goruhuha simasuga、tenisu ... simasen。","speak":"山本さんは ゴルフは しますが、テニス えす しません。","opts":["が","は","と","も"],"ans":3,"k":"mo","why":"Kasus も berarti \"juga / bahkan\", menggantikan が atau を.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":9,"q":"車の　うしろ　　　　　　　女の子が　います。","html":"<ruby>車<rt>sha</rt></ruby>の　うしろ<span class=\"blank\">____</span><ruby>女<rt>jo</rt></ruby>の<ruby>子<rt>ko</rt></ruby>が　います。","ro":"車no usiro ... 女no子ga imasu。","speak":"車の うしろ えす 女の子が います。","opts":["は","に","を","で"],"ans":1,"k":"ni","why":"setelah ろ di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 4","title":"JLPT N5 Grammar Quiz 04","url":"https://forms.gle/g3EMNmLsJSQcVkvb8","no":10,"q":"ナイフ　　　　　　　にくを　きりました。","html":"ナイフ<span class=\"blank\">____</span>にくを　きりました。","ro":"naihu ... nikuo kirimasita。","speak":"ナイフ えす にくを きりました。","opts":["が","に","を","で"],"ans":3,"k":"de","why":"Kasus で berarti alat yang dipakai, atau tempat kejadian.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":1,"q":"へやを　　　　　　　　そうじしました。","html":"へやを<span class=\"blank\">____</span>そうじしました。","ro":"heyao ... souzisimasita。","speak":"へやを えす そうじしました。","opts":["きれいく","きれいな","きれいだ","きれいに"],"ans":3,"k":"ni","why":"setelah を di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":2,"q":"ヒーターを　つけて　へやを　　　　　　　　しました。","html":"ヒーターを　つけて　へやを<span class=\"blank\">____</span>しました。","ro":"hitao tukete heyao ... simasita。","speak":"ヒーターを つけて へやを えす しました。","opts":["あたたかいに","あたたかくに","あたたかいく","あたたかく"],"ans":3,"k":"ku","why":"setelah を di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":3,"q":"子どもたちが　　　　　　　　話して　います。","html":"<ruby>子<rt>ko</rt></ruby>どもたちが<span class=\"blank\">____</span><ruby>話<rt>wa</rt></ruby>して　います。","ro":"子domotatiga ... 話site imasu。","speak":"子どもたちが えす 話して います。","opts":["にぎやかく","にぎやかな","にぎやかに","にぎやかで"],"ans":2,"k":"ni","why":"setelah が di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":4,"q":"にくを　　　　　　　　きります。","html":"にくを<span class=\"blank\">____</span>きります。","ro":"nikuo ... kirimasu。","speak":"にくを えす きります。","opts":["うす","うすい","うすいで","うすく"],"ans":3,"k":"ku","why":"setelah を di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":5,"q":"ばんごはんの　時間を　もっと　　　　　　　　しませんか。","html":"ばんごはんの　<ruby>時間<rt>ji/kan</rt></ruby>を　もっと<span class=\"blank\">____</span>しませんか。","ro":"bangohanno 時間o mo'tuto ... simasenka。","speak":"ばんごはんの 時間を もっと えす しませんか。","opts":["おそく","おそい","おそいに","おそくて"],"ans":0,"k":"ku","why":"setelah と di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":6,"q":"ここは　　　　　　　　いい　レストランですね。","html":"ここは<span class=\"blank\">____</span>いい　レストランですね。","ro":"kokoha ... ii resutorandesune。","speak":"ここは えす いい レストランですね。","opts":["しずかくて","しずくて","しずかで","しずかの"],"ans":2,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":7,"q":"この　ぼうしを　　　　　　　　行きましょう。","html":"この　ぼうしを<span class=\"blank\">____</span><ruby>行<rt>kou</rt></ruby>きましょう。","ro":"kono bousio ... 行kimasi'you。","speak":"この ぼうしを えす 行きましょう。","opts":["かぶると","かぶりて","かぶりに","かぶって"],"ans":2,"k":"ni","why":"setelah を di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":8,"q":"この　まちは　　　　　　　　べんりな　ところです。","html":"この　まちは<span class=\"blank\">____</span>べんりな　ところです。","ro":"kono matiha ... benrina tokorodesu。","speak":"この まちは えす べんりな ところです。","opts":["にぎやか","にぎやくて","にぎやかの","にぎやかで"],"ans":3,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":9,"q":"この くだものは       おいしいです。","html":"この くだものは<span class=\"blank\">____</span>おいしいです。","ro":"kono kudamonoha ... oisiidesu。","speak":"この くだものは えす おいしいです。","opts":["あまい","あまくて","あまいで","あまいくて"],"ans":1,"k":"te","why":"setelah は di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":"Catatan: teks asli form kehilangan tanda 。 di akhir kalimat. Sudah ditambahkan."},{"part":"PART 5","title":"JLPT N5 Grammar Quiz 05","url":"https://forms.gle/nmEmw667yrgFHkfz9","no":10,"q":"きのうの　よるは　７時に　　　　　　　、ごはんを　食べました。","html":"きのうの　よるは　７<ruby>時<rt>ji</rt></ruby>に<span class=\"blank\">____</span>、ごはんを　<ruby>食<rt>shoku</rt></ruby>べました。","ro":"kinouno yoruha ７時ni ... 、gohano 食bemasita。","speak":"きのうの よるは ７時に えす 、ごはんを 食べました。","opts":["かえる","かえって","かえった","かえったり"],"ans":1,"k":"te","why":"setelah に di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":1,"q":"これは　先週　　　　　　　　カメラです。","html":"これは　<ruby>先週<rt>sen/shuu</rt></ruby><span class=\"blank\">____</span>カメラです。","ro":"koreha 先週 ... kameradesu。","speak":"これは 先週 えす カメラです。","opts":["買います","買う","買った","買いた"],"ans":2,"k":"ta","why":"Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":2,"q":"来月　国へ　　　　　　　　人は　いますか。","html":"<ruby>来月<rt>rai/gatsu</rt></ruby>　<ruby>国<rt>koku</rt></ruby>へ<span class=\"blank\">____</span><ruby>人<rt>jin/nin</rt></ruby>は　いますか。","ro":"来月 国he ... 人ha imasuka。","speak":"来月 国へ えす 人は いますか。","opts":["かえる","かえって","かえるの","かえっての"],"ans":0,"k":"kihon","why":"setelah へ di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":3,"q":"あね　　　　　　　つくったケーキは　おいしいです。","html":"あね<span class=\"blank\">____</span>つくったケーキは　おいしいです。","ro":"ane ... tuku'tutakekiha oisiidesu。","speak":"あね えす つくったケーキは おいしいです。","opts":["が","は","を","で"],"ans":0,"k":"ga","why":"setelah ね di Kasus が menandai subjek netral, hal yang baru disebut, atau pemilik.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":4,"q":"いちばん　　　　　　　　しごとは　何ですか。","html":"いちばん<span class=\"blank\">____</span>しごとは　<ruby>何<rt>nan</rt></ruby>ですか。","ro":"itiban ... sigotoha 何desuka。","speak":"いちばん えす しごとは 何ですか。","opts":["たいへん","たいへんの","たいへんな","たいへんだ"],"ans":2,"k":"kihon","why":"setelah ん di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":5,"q":"あした　　　　　　　　人は　だれですか。","html":"あした<span class=\"blank\">____</span><ruby>人<rt>jin/nin</rt></ruby>は　だれですか。","ro":"asita ... 人ha daredesuka。","speak":"あした えす 人は だれですか。","opts":["休み","休む","休んで","休んだ"],"ans":1,"k":"kihon","why":"setelah た di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":6,"q":"山口さん　　　　　　　来る　日は　木よう日です。","html":"<ruby>山口<rt>san/kou</rt></ruby>さん<span class=\"blank\">____</span><ruby>来<rt>rai</rt></ruby>る　<ruby>日<rt>nichi</rt></ruby>は　<ruby>木<rt>moku</rt></ruby>よう<ruby>日<rt>nichi</rt></ruby>です。","ro":"山口san ... 来ru 日ha 木you日desu。","speak":"山口さん えす 来る 日は 木よう日です。","opts":["を","で","の","へ"],"ans":2,"k":"kihon","why":"setelah ん di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":7,"q":"いそがしいから、朝ごはんを　　　　　　　　時間が　ありません。","html":"いそがしいから、<ruby>朝<rt>asa</rt></ruby>ごはんを<span class=\"blank\">____</span><ruby>時間<rt>ji/kan</rt></ruby>が　ありません。","ro":"isogasiikara、朝gohano ... 時間ga arimasen。","speak":"いそがしいから、朝ごはんを えす 時間が ありません。","opts":["食べ","食べる","食べて","食べた"],"ans":1,"k":"kihon","why":"setelah を di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":8,"q":"これは　きょねん　きょうとで　　　　　　　　しゃしんです。","html":"これは　きょねん　きょうとで<span class=\"blank\">____</span>しゃしんです。","ro":"koreha ki'yonen ki'youtode ... si'yasindesu。","speak":"これは きょねん きょうとで えす しゃしんです。","opts":["とる","とるの","とった","とりた"],"ans":2,"k":"ta","why":"setelah で di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":9,"q":"これは　わたしが　　　　　　　　　サンドイッチです。どうぞ　食べて　ください。","html":"これは　わたしが<span class=\"blank\">____</span>サンドイッチです。どうぞ　<ruby>食<rt>shoku</rt></ruby>べて　ください。","ro":"koreha watasiga ... sandoitsutidesu。douzo 食bete kudasai。","speak":"これは わたしが えす サンドイッチです。どうぞ 食べて ください。","opts":["つくり","つくる","つくって","つくった"],"ans":3,"k":"ta","why":"setelah が di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 6","title":"JLPT N5 Grammar Quiz 06","url":"https://forms.gle/9v16J94ky7qjmKzA6","no":10,"q":"けさ　　　　　　　　カフェは　とても　しずかでした。","html":"けさ<span class=\"blank\">____</span>カフェは　とても　しずかでした。","ro":"kesa ... kahu'eha totemo sizukadesita。","speak":"けさ えす カフェは とても しずかでした。","opts":["入る","入れる","入った","入れた"],"ans":2,"k":"ta","why":"setelah さ di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":1,"q":"きょねんの　ふゆは　　　　　　　。","html":"きょねんの　ふゆは<span class=\"blank\">____</span>。","ro":"ki'yonenno huyuha ... 。","speak":"きょねんの ふゆは えす 。","opts":["あたたかいです","あたたかいだった","あたたかくでした","あたたかかったです"],"ans":3,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":2,"q":"学生の　とき　べんきょうが　すき　　　　　　　。","html":"<ruby>学生<rt>gaku/sei</rt></ruby>の　とき　べんきょうが　すき<span class=\"blank\">____</span>。","ro":"学生no toki benki'youga suki ... 。","speak":"学生の とき べんきょうが すき えす 。","opts":["ではありませんでした","ではないでした","くなかったです","はなかったです"],"ans":0,"k":"dewanashi","why":"setelah き di Bentuk lampau ではありませんでした: negasi lampau yang sopan, berarti \"bukan (kemudian)\".","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":3,"q":"この　えいがは　　　　　　　よ。","html":"この　えいがは<span class=\"blank\">____</span>よ。","ro":"kono eigaha ... yo。","speak":"この えいがは えす よ。","opts":["おもしろかった","おもしろだった","おもしろいかった","おもしろいだった"],"ans":0,"k":"ta","why":"setelah は di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":4,"q":"この　ざっしは　　　　　　　ありません。","html":"この　ざっしは<span class=\"blank\">____</span>ありません。","ro":"kono za'tusiha ... arimasen。","speak":"この ざっしは えす ありません。","opts":["おもしろく","おもしろいく","おもしろい","おもしろいでは"],"ans":0,"k":"ku","why":"setelah は di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":5,"q":"きのうは　天気が　　　　　　　ですね。","html":"きのうは　<ruby>天気<rt>ten/ki</rt></ruby>が<span class=\"blank\">____</span>ですね。","ro":"kinouha 天気ga ... desune。","speak":"きのうは 天気が えす ですね。","opts":["よくなかった","よいかった","いくなかった","いかった"],"ans":0,"k":"ta","why":"setelah が di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":6,"q":"先週は　あつかったですが、今週は　　　　　　　。","html":"<ruby>先週<rt>sen/shuu</rt></ruby>は　あつかったですが、<ruby>今週<rt>kon/shuu</rt></ruby>は<span class=\"blank\">____</span>。","ro":"先週ha atuka'tutadesuga、今週ha ... 。","speak":"先週は あつかったですが、今週は えす 。","opts":["あつかったです","あついでした","あつくないです","あつくではありません"],"ans":2,"k":"kunaidesu","why":"setelah は di Bentuk negatif kata sifat yang sopan: stem + くないdesu.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":7,"q":"この　ホテルは　　　　　　　ありませんが、きれいです。","html":"この　ホテルは<span class=\"blank\">____</span>ありませんが、きれいです。","ro":"kono hoteruha ... arimasenga、kireidesu。","speak":"この ホテルは えす ありませんが、きれいです。","opts":["あたらしい","あたらしく","あたらしくては","あたらしいでは"],"ans":1,"k":"ku","why":"setelah は di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":8,"q":"夜に なって、　　　　　かずが ふいています。","html":"<ruby>夜<rt>yoru</rt></ruby>に なって、<span class=\"blank\">____</span>かずが ふいています。","ro":"夜ni na'tute、 ... kazuga huiteimasu。","speak":"夜に なって、 えす かずが ふいています。","opts":["すずしい","すずしいの","すずしいな","すずしくて"],"ans":3,"k":"te","why":"Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":"Catatan: teks asli form kehilangan tanda 。 di akhir kalimat. Sudah ditambahkan."},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":9,"q":"駅の　前の　レストランは　　　　　　　よ。","html":"<ruby>駅<rt>eki</rt></ruby>の　<ruby>前<rt>zen</rt></ruby>の　レストランは<span class=\"blank\">____</span>よ。","ro":"駅no 前no resutoranha ... yo。","speak":"駅の 前の レストランは えす よ。","opts":["おいしくなかった","おいしいくなかった","おいしいじゃなかった","おいしくないだった"],"ans":0,"k":"ta","why":"setelah は di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 7","title":"JLPT N5 Grammar Quiz 07","url":"https://forms.gle/ujNpzH4uYkepwutk7","no":10,"q":"日本語の　テストは　　　　　　　と　みんな　言って　いました。","html":"<ruby>日本語<rt>nichi/hon/go</rt></ruby>の　テストは<span class=\"blank\">____</span>と　みんな　<ruby>言<rt>gen</rt></ruby>って　いました。","ro":"日本語no tesutoha ... to minna 言'tute imasita。","speak":"日本語の テストは えす と みんな 言って いました。","opts":["たいへんかった","たいへんだった","たいへんなかった","たいへんくなかった"],"ans":2,"k":"ta","why":"setelah は di Bentuk lampau polos, ending た atau った. Menyataakan aksi yang sudah selesai di masa lalu.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":1,"q":"からだが　　　　　　　なりました。","html":"からだが<span class=\"blank\">____</span>なりました。","ro":"karadaga ... narimasita。","speak":"からだが えす なりました。","opts":["じょうぶ","じょうぶに","じょうぶく","じょうぶで"],"ans":1,"k":"ni","why":"setelah が di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":2,"q":"空が　　　　　　　なりました。","html":"<ruby>空<rt>sora</rt></ruby>が<span class=\"blank\">____</span>なりました。","ro":"空ga ... narimasita。","speak":"空が えす なりました。","opts":["くらく","くらいで","くらくに","くらいに"],"ans":0,"k":"ku","why":"setelah が di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":3,"q":"　　　　　　なりました。ひるごはんの　時間です。","html":"<span class=\"blank\">____</span>なりました。ひるごはんの　<ruby>時間<rt>ji/kan</rt></ruby>です。","ro":"... narimasita。hirugohanno 時間desu。","speak":"えす なりました。ひるごはんの 時間です。","opts":["12時が","12時に","12時から","12時まで"],"ans":1,"k":"ni","why":"Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":4,"q":"花が　たくさん　さいて　にわが　　　　　　　なりました。","html":"<ruby>花<rt>ka</rt></ruby>が　たくさん　さいて　にわが<span class=\"blank\">____</span>なりました。","ro":"花ga takusan saite niwaga ... narimasita。","speak":"花が たくさん さいて にわが えす なりました。","opts":["きれいに","きれいく","きれいで","きれいだ"],"ans":0,"k":"ni","why":"setelah が di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":5,"q":"大学の　友だちは　えいごの　　　　　　　なりました。","html":"<ruby>大学<rt>dai/oo/gaku</rt></ruby>の　<ruby>友<rt>yuu</rt></ruby>だちは　えいごの<span class=\"blank\">____</span>なりました。","ro":"大学no 友datiha eigono ... narimasita。","speak":"大学の 友だちは えいごの えす なりました。","opts":["先生で","先生を","先生に","先生から"],"ans":2,"k":"ni","why":"setelah の di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":6,"q":"かばんに　じしょを　入れて、とても　　　　　　　なりました。","html":"かばんに　じしょを　<ruby>入<rt>nyuu</rt></ruby>れて、とても<span class=\"blank\">____</span>なりました。","ro":"kabanni zisi'yoo 入rete、totemo ... narimasita。","speak":"かばんに じしょを 入れて、とても えす なりました。","opts":["おもい","おもく","おもいに","おもくに"],"ans":1,"k":"ku","why":"setelah も di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":7,"q":"すずきさんの　会社は　　　　　　　なりました。","html":"すずきさんの　<ruby>会社<rt>kai/sha</rt></ruby>は<span class=\"blank\">____</span>なりました。","ro":"suzukisanno 会社ha ... narimasita。","speak":"すずきさんの 会社は えす なりました。","opts":["ゆうめい","ゆうめく","ゆうめいく","ゆうめいに"],"ans":3,"k":"ni","why":"setelah は di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":8,"q":"天気が　　　　　　　なりました。","html":"<ruby>天気<rt>ten/ki</rt></ruby>が<span class=\"blank\">____</span>なりました。","ro":"天気ga ... narimasita。","speak":"天気が えす なりました。","opts":["いいに","よくに","よく","いい"],"ans":2,"k":"ku","why":"setelah が di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":9,"q":"さいとうさんは　ことし　　　　　　　なります。","html":"さいとうさんは　ことし<span class=\"blank\">____</span>なります。","ro":"saitousanha kotosi ... narimasu。","speak":"さいとうさんは ことし えす なります。","opts":["はたちを","はたちが","はたちに","はたちく"],"ans":2,"k":"ni","why":"setelah し di Kasus に berarti arah atau tujuan (\"ke\"), letak, atau juga. Dipakai untuk tempat, waktu, dan orang.","note":""},{"part":"PART 8","title":"JLPT N5 Grammar Quiz 08","url":"https://forms.gle/diET7bPGAnzoxaVv9","no":10,"q":"つくえの　上が　　　　　　　なりました。","html":"つくえの　<ruby>上<rt>jou</rt></ruby>が<span class=\"blank\">____</span>なりました。","ro":"tukueno 上ga ... narimasita。","speak":"つくえの 上が えす なりました。","opts":["きたなく","きたないく","きたないに","きたないくに"],"ans":0,"k":"ku","why":"setelah が di Stem kata sifat (i-adjective): bentuknya tanpa くない. Bentuk sah: くnai, くkute, くku.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":1,"q":"じしょを　　　　　　　、こまりました。","html":"じしょを<span class=\"blank\">____</span>、こまりました。","ro":"zisi'yoo ... 、komarimasita。","speak":"じしょを えす 、こまりました。","opts":["わすれて","わすれた","わすれる","わすれないで"],"ans":0,"k":"te","why":"setelah を di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":2,"q":"私の　アパートは　　　　　　　　いいです。","html":"<ruby>私<rt>watashi</rt></ruby>の　アパートは<span class=\"blank\">____</span>いいです。","ro":"私no apatoha ... iidesu。","speak":"私の アパートは えす いいです。","opts":["しずかく","しずかで","しずかので","しずかくて"],"ans":1,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":3,"q":"　　　　　　　会社を　休みました。","html":"<span class=\"blank\">____</span><ruby>会社<rt>kai/sha</rt></ruby>を　<ruby>休<rt>kyuu</rt></ruby>みました。","ro":"... 会社o 休mimasita。","speak":"えす 会社を 休みました。","opts":["びょうきを","びょうきに","びょうきが","びょうきで"],"ans":3,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":4,"q":"ここは　　　　　　　　あぶないです。","html":"ここは<span class=\"blank\">____</span>あぶないです。","ro":"kokoha ... abunaidesu。","speak":"ここは えす あぶないです。","opts":["くらい","くらくて","くらいくて","くらいで"],"ans":1,"k":"te","why":"setelah は di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":5,"q":"あの　ビルは　エレベーターが　　　　　　　、ふべんです。","html":"あの　ビルは　エレベーターが<span class=\"blank\">____</span>、ふべんです。","ro":"ano biruha erebetaga ... 、hubendesu。","speak":"あの ビルは エレベーターが えす 、ふべんです。","opts":["なくて","ないて","ないで","なくで"],"ans":0,"k":"nakute","why":"setelah が di Pola alasan: なくて. Ditempelkan ke kalimat yang menjelaskan alasan sebuah keadaan.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":6,"q":"おとうとは　　　　　　　　びょういんへ　行きました。","html":"おとうとは<span class=\"blank\">____</span>びょういんへ　<ruby>行<rt>kou</rt></ruby>きました。","ro":"otoutoha ... bi'youinhe 行kimasita。","speak":"おとうとは えす びょういんへ 行きました。","opts":["かぜに","かぜて","かぜで","かぜが"],"ans":2,"k":"kihon","why":"setelah は di Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":7,"q":"さいふを　　　　　　　、こまって　います。","html":"さいふを<span class=\"blank\">____</span>、こまって　います。","ro":"saihuo ... 、koma'tute imasu。","speak":"さいふを えす 、こまって います。","opts":["なくします","なくして","なくって","なくすて"],"ans":1,"k":"te","why":"setelah を di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":8,"q":"お金が　　　　　　　、買いませんでした。","html":"お<ruby>金<rt>kin</rt></ruby>が<span class=\"blank\">____</span>、<ruby>買<rt>bai</rt></ruby>いませんでした。","ro":"o金ga ... 、買imasendesita。","speak":"お金が えす 、買いませんでした。","opts":["なくて","ないで","ないて","なって"],"ans":0,"k":"nakute","why":"setelah が di Pola alasan: なくて. Ditempelkan ke kalimat yang menjelaskan alasan sebuah keadaan.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":9,"q":"つよい　かぜが　　　　　　　、電車が　とまりました。","html":"つよい　かぜが<span class=\"blank\">____</span>、<ruby>電車<rt>den/sha</rt></ruby>が　とまりました。","ro":"tuyoi kazega ... 、電車ga tomarimasita。","speak":"つよい かぜが えす 、電車が とまりました。","opts":["ふく","ふきて","ふいて","ふくて"],"ans":2,"k":"te","why":"setelah が di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 9","title":"JLPT N5 Grammar Quiz 09","url":"https://forms.gle/BoTGuggNLZU4z8o59","no":10,"q":"　　　　　　　川の　水が　きたなく　なりました。","html":"<span class=\"blank\">____</span><ruby>川<rt>sen</rt></ruby>の　<ruby>水<rt>mizu</rt></ruby>が　きたなく　なりました。","ro":"... 川no 水ga kitanaku narimasita。","speak":"えす 川の 水が きたなく なりました。","opts":["雨は","雨を","雨で","雨の"],"ans":2,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":1,"q":"　　　　　　　スポーツが すきですか。","html":"<span class=\"blank\">____</span>スポーツが すきですか。","ro":"... supotuga sukidesuka。","speak":"えす スポーツが すきですか。","opts":["どんな","どこ","どれ","どちら"],"ans":0,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":"Catatan: teks asli form punya spasi berlebih di depan dan tanda 。。 ganda. Sudah dirapikan."},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":2,"q":"毎日　　　　　　　　ねますか。","html":"<ruby>毎日<rt>mai/nichi</rt></ruby><span class=\"blank\">____</span>ねますか。","ro":"毎日 ... nemasuka。","speak":"毎日 えす ねますか。","opts":["どんな","いくつ","どれぐらい","どちら"],"ans":2,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":3,"q":"　　　　　　　スポーツを　していますか。","html":"<span class=\"blank\">____</span>スポーツを　していますか。","ro":"... supotuo siteimasuka。","speak":"えす スポーツを していますか。","opts":["何か","どれ","だれ","いかが"],"ans":0,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":4,"q":"きのうは　　　　　　　　早く　かえりましたか。","html":"きのうは<span class=\"blank\">____</span><ruby>早<rt>sou</rt></ruby>く　かえりましたか。","ro":"kinouha ... 早ku kaerimasitaka。","speak":"きのうは えす 早く かえりましたか。","opts":["いかが","いくつ","どうして","どちら"],"ans":2,"k":"te","why":"setelah は di Te-form (renyou-kei), ending て. Dipakai untuk menghubungkan dua aksi berurutan, atau sebelum ください / ませ.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":5,"q":"きのうは　うちに　いて、　　　　　　　あいませんでした。","html":"きのうは　うちに　いて、<span class=\"blank\">____</span>あいませんでした。","ro":"kinouha utini ite、 ... aimasendesita。","speak":"きのうは うちに いて、 えす あいませんでした。","opts":["だれにも","だれに","だれと","だれかと"],"ans":0,"k":"darenimo","why":"Kasus に juga berarti \"juga\". 誰にも = \"siapa pun juga\".","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":6,"q":"つぎの　えいがは　６時　　　　　　です。","html":"つぎの　えいがは　６<ruby>時<rt>ji</rt></ruby><span class=\"blank\">____</span>です。","ro":"tugino eigaha ６時 ... desu。","speak":"つぎの えいがは ６時 えす です。","opts":["が","を","で","から"],"ans":3,"k":"kara","why":"Kasus から berarti asal atau titik mulai. Menandai waktu atau tempat mulai.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":7,"q":"きょうは　パーティーに　だれ　　　　　　　来ますか。","html":"きょうは　パーティーに　だれ<span class=\"blank\">____</span><ruby>来<rt>rai</rt></ruby>ますか。","ro":"ki'youha pate'ini dare ... 来masuka。","speak":"きょうは パーティーに だれ えす 来ますか。","opts":["は","を","に","が"],"ans":3,"k":"ga","why":"setelah れ di Kasus が menandai subjek netral, hal yang baru disebut, atau pemilik.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":8,"q":"おかしを　買いました。　それから、飲み物　　　　　　　買いました。","html":"おかしを　<ruby>買<rt>bai</rt></ruby>いました。　それから、<ruby>飲<rt>in</rt></ruby>み<ruby>物<rt>mono</rt></ruby><span class=\"blank\">____</span><ruby>買<rt>bai</rt></ruby>いました。","ro":"okasio 買imasita。 sorekara、飲mi物 ... 買imasita。","speak":"おかしを 買いました。 それから、飲み物 えす 買いました。","opts":["か","が","も","は"],"ans":2,"k":"mo","why":"Kasus も berarti \"juga / bahkan\", menggantikan が atau を.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":9,"q":"ペンは　５本　　　　　　　３００円です。","html":"ペンは　５<ruby>本<rt>hon</rt></ruby><span class=\"blank\">____</span>３００<ruby>円<rt>en</rt></ruby>です。","ro":"penha ５本 ... ３００円desu。","speak":"ペンは ５本 えす ３００円です。","opts":["を","に","で","と"],"ans":2,"k":"de","why":"Kasus で berarti alat yang dipakai, atau tempat kejadian.","note":""},{"part":"PART 10","title":"JLPT N5 Grammar Quiz 10","url":"https://forms.gle/6RFKG5obWqynFN638","no":10,"q":"　　　　　　で　日本語を　べんきょうしましたか。","html":"<span class=\"blank\">____</span>で　<ruby>日本語<rt>nichi/hon/go</rt></ruby>を　べんきょうしましたか。","ro":"... de 日本語o benki'yousimasitaka。","speak":"えす で 日本語を べんきょうしましたか。","opts":["どこ","いつ","どう","どの"],"ans":0,"k":"kihon","why":"Bentuk kamus (asli). Setelah を, kata kerja tidak boleh diubah ke te-form maupun lampau.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":1,"q":"けさ　6時　　　　　　　おきました。","html":"けさ　6<ruby>時<rt>ji</rt></ruby><span class=\"blank\">____</span>おきました。","ro":"kesa 6時 ... okimasita。","speak":"けさ 6時 えす おきました。","opts":["ごろ","じゅう","まで","ぐらい"],"ans":0,"k":"goro","why":"Goro-koso ごろ berarti \"sekitar 30 menit\". Hanya untuk waktu, tidak untuk besaran.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":2,"q":"パーティーで　しゃしんを　10枚　　　　　　　とりました。","html":"パーティーで　しゃしんを　10<ruby>枚<rt>mai</rt></ruby><span class=\"blank\">____</span>とりました。","ro":"pate'ide si'yasino 10枚 ... torimasita。","speak":"パーティーで しゃしんを 10枚 えす とりました。","opts":["ごろ","じゅう","しか","ぐらい"],"ans":1,"k":"juu","why":"Juu じゅう berarti \"tepat / sepanjang\". Untuk jam biasanya digabung dengan が.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":3,"q":"会社まで　50分　　　　　　　かかります。","html":"<ruby>会社<rt>kai/sha</rt></ruby>まで　50<ruby>分<rt>pun/bun</rt></ruby><span class=\"blank\">____</span>かかります。","ro":"会社made 50分 ... kakarimasu。","speak":"会社まで 50分 えす かかります。","opts":["しか","じゅう","ごろ","ぐらい"],"ans":3,"k":"gurai","why":"Gurai ぐらい berarti \"sekitar / tidak lebih dari\". Untuk waktu maupun besaran, boleh diikuti を.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":4,"q":"あした　9時半　　　　　　　来て　ください。","html":"あした　9<ruby>時半<rt>ji/han</rt></ruby><span class=\"blank\">____</span><ruby>来<rt>rai</rt></ruby>て　ください。","ro":"asita 9時半 ... 来te kudasai。","speak":"あした 9時半 えす 来て ください。","opts":["まで","ごろ","ぐらい","じゅう"],"ans":1,"k":"goro","why":"Goro-koso ごろ berarti \"sekitar 30 menit\". Hanya untuk waktu, tidak untuk besaran.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":5,"q":"一日　　　　　　　べんきょうを　して、つかれました。","html":"<ruby>一日<rt>ichi/nichi</rt></ruby><span class=\"blank\">____</span>べんきょうを　して、つかれました。","ro":"一日 ... benki'youo site、tukaremasita。","speak":"一日 えす べんきょうを して、つかれました。","opts":["じゅう","から","まで","ごろ"],"ans":0,"k":"juu","why":"Juu じゅう berarti \"tepat / sepanjang\". Untuk jam biasanya digabung dengan が.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":6,"q":"毎日　１時間　　　　　　　ギターの　れんしゅうを　します。","html":"<ruby>毎日<rt>mai/nichi</rt></ruby>　１<ruby>時間<rt>ji/kan</rt></ruby><span class=\"blank\">____</span>ギターの　れんしゅうを　します。","ro":"毎日 １時間 ... gitano rensi'yuuo simasu。","speak":"毎日 １時間 えす ギターの れんしゅうを します。","opts":["ごろ","ぐらい","しか","じゅう"],"ans":1,"k":"gurai","why":"Gurai ぐらい berarti \"sekitar / tidak lebih dari\". Untuk waktu maupun besaran, boleh diikuti を.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":7,"q":"けさ　何時　　　　　　　学校に　つきましたか。","html":"けさ　<ruby>何時<rt>nan/ji</rt></ruby><span class=\"blank\">____</span><ruby>学校<rt>gaku/kou</rt></ruby>に　つきましたか。","ro":"kesa 何時 ... 学校ni tukimasitaka。","speak":"けさ 何時 えす 学校に つきましたか。","opts":["でも","ぐらい","じゅう","ごろ"],"ans":3,"k":"goro","why":"Goro-koso ごろ berarti \"sekitar 30 menit\". Hanya untuk waktu, tidak untuk besaran.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":8,"q":"きのうは　何時間　　　　　　　ねましたか。","html":"きのうは　<ruby>何時間<rt>nan/ji/kan</rt></ruby><span class=\"blank\">____</span>ねましたか。","ro":"kinouha 何時間 ... nemasitaka。","speak":"きのうは 何時間 えす ねましたか。","opts":["まで","ぐらい","じゅう","ごろ"],"ans":1,"k":"gurai","why":"Gurai ぐらい berarti \"sekitar / tidak lebih dari\". Untuk waktu maupun besaran, boleh diikuti を.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":9,"q":"あの　山の　上には　一年　　　　　　　ゆきが　あります。","html":"あの　<ruby>山<rt>san</rt></ruby>の　<ruby>上<rt>jou</rt></ruby>には　<ruby>一年<rt>ichi/nen</rt></ruby><span class=\"blank\">____</span>ゆきが　あります。","ro":"ano 山no 上niha 一年 ... yukiga arimasu。","speak":"あの 山の 上には 一年 えす ゆきが あります。","opts":["など","から","じゅう","ごろ"],"ans":2,"k":"juu","why":"Juu じゅう berarti \"tepat / sepanjang\". Untuk jam biasanya digabung dengan が.","note":""},{"part":"PART 11","title":"JLPT N5 Grammar Quiz 11","url":"https://forms.gle/Dk3uEr469tChAmG99","no":10,"q":"20分　　　　　　　まちましたが、バスは　来ませんでした。","html":"20<ruby>分<rt>pun/bun</rt></ruby><span class=\"blank\">____</span>まちましたが、バスは　<ruby>来<rt>rai</rt></ruby>ませんでした。","ro":"20分 ... matimasitaga、basuha 来masendesita。","speak":"20分 えす まちましたが、バスは 来ませんでした。","opts":["ごろ","じゅう","しか","ぐらい"],"ans":3,"k":"gurai","why":"Gurai ぐらい berarti \"sekitar / tidak lebih dari\". Untuk waktu maupun besaran, boleh diikuti を.","note":""}];
+const LETTER = ['a','b','c','d'];
+let state = {};          // idx -> 1
+let cur = 'ALL';
+let onlyBad = false;
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const main = $('#main'), tabs = $('#tabs');
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function parts(){ return [...new Set(Q.map(x => x.part))]; }
+function blank(s){
+  return esc(s)
+    .replace(/_{2,}/g, '<span class="blank">____</span>')
+    .replace(/ {3,}/g, '<span class="blank">____</span>');
+}
+
+/* ---------- TTS ---------- */
+let jpVoices = [];
+function loadVoices(){
+  jpVoices = speechSynthesis.getVoices().filter(v => /^ja/i.test(v.lang));
+}
+if('speechSynthesis' in window){
+  loadVoices();
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
+function say(text){
+  if(!('speechSynthesis' in window)){ toast('Browser tidak punya text-to-speech'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.82; u.pitch = 1;
+  if(jpVoices.length) u.voice = jpVoices[0];
+  speechSynthesis.speak(u);
+}
+
+/* ---------- stats (CountUp) ---------- */
+let shown = {right:0, done:0, wrong:0};
+function countTo(el, from, to){
+  if(from === to){ el.textContent = to; return; }
+  const t0 = performance.now(), dur = 420;
+  (function step(t){
+    const k = Math.min(1, (t - t0)/dur);
+    const e = 1 - Math.pow(1 - k, 3);
+    el.textContent = Math.round(from + (to - from) * e);
+    if(k < 1) requestAnimationFrame(step);
+  })(t0);
+}
+function stats(){
+  const keys = Object.keys(state);
+  let right = 0;
+  keys.forEach(i => { if(state[i] === Q[i].ans) right++; });
+  const done = keys.length, wrong = done - right;
+
+  countTo($('#sRight'), shown.right, right);
+  countTo($('#sDone'),  shown.done,  done);
+  countTo($('#sWrong'), shown.wrong, wrong);
+  shown = {right, done, wrong};
+
+  const p = $('#sPct'), ring = $('#ringFg'), lbl = $('#ringLbl');
+  const C = 119.4;
+  if(!done){
+    p.className = 'pct';
+    lbl.textContent = '0%';
+    ring.style.strokeDashoffset = C;
+    ring.style.stroke = '';
+  } else {
+    const a = Math.round(right/done*100);
+    p.className = 'pct ' + (a>=80?'good':a>=50?'mid':'low');
+    lbl.textContent = a + '%';
+    ring.style.strokeDashoffset = C - C*(a/100);
+    ring.style.stroke = a>=80 ? 'var(--ok)' : a>=50 ? 'var(--warn)' : 'var(--bad)';
+  }
+
+  const bar = $('#pbar');
+  bar.firstElementChild.style.width = (Q.length ? done/Q.length*100 : 0) + '%';
+  bar.className = 'pbar' + (done && right===done ? ' ok' : '');
+}
+
+/* ---------- toast ---------- */
+let toastT = null;
+function toast(msg, kind){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast up ' + (kind || '');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => { t.className = 'toast ' + (kind || ''); }, 1900);
+}
+
+/* ---------- confetti ---------- */
+function confetti(x, y){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['var(--ok)','var(--accent)','var(--warn)','var(--accent2)'];
+  for(let n=0;n<16;n++){
+    const s = document.createElement('b');
+    s.className = 'spark';
+    const ang = (Math.PI*2*n)/16 + Math.random()*0.5;
+    const dist = 40 + Math.random()*70;
+    s.style.cssText = 'left:'+x+'px;top:'+y+'px;background:'+colors[n%4]+
+      ';--dx:'+Math.cos(ang)*dist+'px;--dy:'+(Math.sin(ang)*dist + 40)+'px;'+
+      '--rot:'+(Math.random()*720-360)+'deg;width:'+(4+Math.random()*4)+'px;height:'+(4+Math.random()*4)+'px';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1000);
+  }
+}
+
+/* ---------- render ---------- */
+function visible(){
+  let idx = [];
+  for(let i=0;i<Q.length;i++){
+    if(cur !== 'ALL' && Q[i].part !== cur) continue;
+    if(onlyBad && !(i in state && state[i] !== Q[i].ans)) continue;
+    idx.push(i);
+  }
+  return idx;
+}
+
+function render(){
+  main.innerHTML = '';
+  const idx = visible();
+  let last = null, n = 0;
+  idx.forEach(i => {
+    const it = Q[i];
+    if(it.part !== last){
+      last = it.part;
+      const h = document.createElement('h2');
+      h.className = 'ph';
+      h.style.animationDelay = (n*22) + 'ms';
+      const label = it.part === cur ? it.title : it.part + ' — ' + it.title;
+      h.innerHTML = '<span class="n">'+esc(it.part)+'</span>'+esc(label)+
+                    '<span class="meta">'+it.opts.length+' pilihan</span>';
+      main.appendChild(h);
+    }
+    const c = card(i, it);
+    c.style.animationDelay = Math.min(n*26, 420) + 'ms';
+    main.appendChild(c);
+    n++;
+  });
+  if(!idx.length){
+    const p = document.createElement('p');
+    p.className = 'empty';
+    p.textContent = onlyBad ? 'Tidak ada jawaban salah. Semua beres.' : 'Tidak ada soal untuk filter ini.';
+    main.appendChild(p);
+  }
+  renderTabs();
+}
+
+function whyNode(it){
+  const w = document.createElement('div'); w.className = 'why';
+  let h = '<b>Kenapa?</b> ' + esc(it.why);
+  h += '<b>Kunci &mdash; ' + LETTER[it.ans] + '. ' + esc(it.opts[it.ans]) + '</b>';
+  if(it.note) h += '<i>' + esc(it.note) + '</i>';
+  w.innerHTML = h;
+  return w;
+}
+
+function card(i, it){
+  const c = document.createElement('div'); c.className = 'card'; c.dataset.i = i;
+  if(i in state){
+    c.classList.add(state[i]===it.ans ? 'ok' : 'no');
+    c.classList.add('ans');
+  }
+
+  const n = document.createElement('div'); n.className='qn';
+  n.innerHTML = esc(it.part)+' · soal '+it.no+'<span class="src">'+esc(it.title)+'</span>' +
+    (it.url ? '<a class="srcf" href="'+esc(it.url)+'" target="_blank" rel="noopener">form &rarr;</a>' : '');
+  const q = document.createElement('div'); q.className='q'; q.innerHTML = it.html || blank(it.q);
+  c.appendChild(n); c.appendChild(q);
+  const ex = document.createElement('div'); ex.className = 'extras';
+  if(it.ro){ const r = document.createElement('span'); r.className = 'ro';
+    r.textContent = it.ro; ex.appendChild(r); }
+  if(it.speak){
+    const b = document.createElement('button'); b.type = 'button';
+    b.className = 'tts'; b.title = 'Dengarkan soal';
+    b.textContent = '\u{1F50A} dengar';
+    b.onclick = e => { e.stopPropagation(); say(it.speak); };
+    ex.appendChild(b);
+  }
+  if(ex.childNodes.length) c.appendChild(ex);
+
+  it.opts.forEach((o,oi) => {
+    const b = document.createElement('button'); b.className='opt'; b.type='button';
+    b.innerHTML = '<span class="k">'+LETTER[oi]+'</span><span>'+esc(o)+'</span><span class="mk"></span>';
+    if(i in state){
+      b.disabled = true;
+      if(oi === it.ans){ b.classList.add('ok'); b.querySelector('.mk').textContent = '✓'; }
+      if(oi === state[i] && oi !== it.ans){ b.classList.add('no'); b.querySelector('.mk').textContent = '✗'; }
+    } else {
+      b.onclick = () => pick(i, oi);
+    }
+    c.appendChild(b);
+  });
+
+  const fx = document.createElement('div'); fx.className='fx';
+  if(i in state){
+    fx.textContent = state[i]===it.ans
+      ? '✓ Benar — ' + LETTER[it.ans] + '. ' + it.opts[it.ans]
+      : '✗ Jawabanmu ' + LETTER[state[i]] + ' — yang benar ' + LETTER[it.ans] + '. ' + it.opts[it.ans];
+  }
+  c.appendChild(fx);
+  if(i in state) c.appendChild(whyNode(it));
+  return c;
+}
+
+function pick(i, oi){
+  if(i in state) return;
+  state[i] = oi;
+  const right = oi === Q[i].ans;
+  const c = main.querySelector('.card[data-i="'+i+'"]');
+  c.classList.add(right ? 'ok' : 'no');
+  c.classList.add('ans');
+  c.querySelectorAll('.opt').forEach((b,bi) => {
+    b.disabled = true; b.onclick = null;
+    if(bi === Q[i].ans){ b.classList.add('ok'); b.querySelector('.mk').textContent='✓'; }
+    if(bi === oi && !right){ b.classList.add('no'); b.querySelector('.mk').textContent='✗'; }
+  });
+  const fx = document.createElement('div'); fx.className='fx';
+  c.appendChild(whyNode(Q[i]));
+  fx.textContent = right
+    ? '✓ Benar — ' + LETTER[Q[i].ans] + '. ' + Q[i].opts[Q[i].ans]
+    : '✗ Jawabanmu ' + LETTER[oi] + ' — yang benar ' + LETTER[Q[i].ans] + '. ' + Q[i].opts[Q[i].ans];
+  c.appendChild(fx);
+  stats();
+
+  if(right){
+    const k = c.querySelector('.opt.ok .k');
+    const r = k.getBoundingClientRect();
+    confetti(r.left + r.width/2, r.top + r.height/2);
+    c.classList.add('flash');
+    setTimeout(() => c.classList.remove('flash'), 620);
+  }
+  renderTabs();
+  if(onlyBad) setTimeout(render, 340);
+}
+
+/* ---------- tabs ---------- */
+function renderTabs(){
+  tabs.innerHTML = '';
+  const all = document.createElement('button');
+  all.className='tab'+(cur==='ALL'?' on':'');
+  all.textContent = 'Semua';
+  let a=0,r=0;
+  for(let i=0;i<Q.length;i++) if(i in state){ a++; if(state[i]===Q[i].ans) r++; }
+  if(a) all.appendChild(badge(r, a));
+  all.onclick = () => { onlyBad=false; switchTo('ALL', () => { cur='ALL'; render(); }); };
+  tabs.appendChild(all);
+
+  parts().forEach(p => {
+    const t = document.createElement('button');
+    let ansd = 0, right = 0;
+    for(let i=0;i<Q.length;i++){
+      if(Q[i].part !== p) continue;
+      if(i in state){ ansd++; if(state[i] === Q[i].ans) right++; }
+    }
+    t.className = 'tab' + (cur===p?' on':'');
+    t.appendChild(document.createTextNode(p));
+    if(ansd) t.appendChild(badge(right, ansd));
+    t.onclick = () => { onlyBad=false; switchTo(p, () => { cur = p; render(); }); };
+    tabs.appendChild(t);
+  });
+}
+function badge(right, total){
+  const s = document.createElement('span');
+  const rate = right/total;
+  s.className = 'mini' + (rate===1 ? ' full' : rate>=0.5 ? ' half' : ' empty');
+  s.textContent = right + '/' + total;
+  return s;
+}
+
+/* ---------- theme ---------- */
+function applyTheme(){
+  const dark = document.documentElement.dataset.theme === 'dark';
+  $('#themeIco').innerHTML = dark ? '&#9789;' : '&#9788;';
+  $('#themeTxt').textContent = dark ? 'Terang' : 'Gelap';
+  $('#themeBtn').setAttribute('aria-pressed', String(dark));
+}
+function toggleTheme(){
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('bunpou-theme', next);
+  applyTheme();
+}
+
+/* ---------- toolbar ---------- */
+function resetAll(){
+  state = {}; onlyBad = false; render(); stats();
+  toast('Progress direset');
+}
+function revealPart(){
+  const list = visible();
+  if(!list.length) return;
+  const fresh = list.filter(i => !(i in state));
+  if(!fresh.length){ toast('Part ini sudah lengkap'); return; }
+  fresh.forEach(i => { state[i] = Q[i].ans; });
+  render(); stats();
+  toast(fresh.length + ' soal dibuka kuncinya', 'ok');
+}
+function onlyWrong(){
+  onlyBad = !onlyBad;
+  render();
+  toast(onlyBad ? 'Menampilkan soal salah saja' : 'Tampilkan semua soal');
+}
+function jumpWrong(){
+  const bad = Q.findIndex((x,i) => i in state && state[i] !== x.ans);
+  if(bad < 0){ toast('Belum ada jawaban salah', 'ok'); return; }
+  cur = 'ALL'; onlyBad = false; render();
+  const el = main.querySelector('.card[data-i="'+bad+'"]');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* ---------- boot ---------- */
+(function boot(){
+  const el = $('#boot'), msg = $('#bootMsg');
+  const steps = ['Menyiapkan 110 soal','Memuat kunci jawaban','Menyusun kartu'];
+  let i = 0;
+  const tick = setInterval(() => {
+    i++;
+    if(i < steps.length) msg.textContent = steps[i];
+  }, 210);
+  function ready(){
+    clearInterval(tick);
+    el.classList.add('gone');
+    setTimeout(() => el.remove(), 560);
+  }
+  if(document.readyState === 'complete') setTimeout(ready, 620);
+  else addEventListener('load', () => setTimeout(ready, 620));
+})();
+
+/* ---------- per-part loading ---------- */
+let loadT = null;
+function switchTo(part, done){
+  const pl = $('#partload');
+  pl.classList.add('on');
+  clearTimeout(loadT);
+  loadT = setTimeout(() => {
+    done();
+    setTimeout(() => pl.classList.remove('on'), 120);
+  }, 300);
+}
+
+applyTheme();
+render(); stats();
+
+/* ---------- spotlight (React Bits) ---------- */
+main.addEventListener('pointermove', e => {
+  const c = e.target.closest('.card');
+  if(!c) return;
+  const r = c.getBoundingClientRect();
+  c.style.setProperty('--mx', ((e.clientX - r.left)/r.width*100).toFixed(1) + '%');
+  c.style.setProperty('--my', ((e.clientY - r.top)/r.height*100).toFixed(1) + '%');
+});
+
+/* ---------- sticky header shrink ---------- */
+let ticking = false;
+addEventListener('scroll', () => {
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    $('#hd').classList.toggle('shrink', scrollY > 12);
+    ticking = false;
+  });
+}, {passive:true});
+
+/* ---------- keyboard ---------- */
+const KEYMAP = {a:0,b:1,c:2,d:3,1:0,2:1,3:2,4:3};
+document.addEventListener('keydown', e => {
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  if(/^(input|textarea|select)$/i.test(e.target.tagName)) return;
+  const k = e.key.toLowerCase();
+  if(k === 'r'){ resetAll(); return; }
+  if(k === 's'){ revealPart(); return; }
+  if(k === 'w'){ onlyWrong(); return; }
+  if(k === 't'){ toggleTheme(); return; }
+  if(!(k in KEYMAP)) return;
+  const pending = visible().find(i => !(i in state));
+  if(pending === undefined) return;
+  const card = main.querySelector('.card[data-i="'+pending+'"]');
+  if(!card) return;
+  const opt = card.querySelectorAll('.opt')[KEYMAP[k]];
+  if(opt && !opt.disabled){
+    opt.click();
+    setTimeout(() => {
+      const next = main.querySelector('.card[data-i="'+pending+'"] + .card');
+      if(next) next.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 300);
+  }
+});
+</script>
+</body>
+</html>

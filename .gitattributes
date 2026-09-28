@@ -1,0 +1,4 @@
+# Keep the shipped files byte-identical to what was verified.
+# Without this, Git's autocrlf rewrites LF to CRLF on checkout, which changes
+# quiz.html and shifts every byte offset in it.
+* text=auto eol=lf
